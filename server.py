@@ -64,7 +64,8 @@ def example_api_response(some_id):
 @route("/fail")
 def fail_route():
   raise RuntimeError("There is an error!")
-  return HTTPResponse(status=500, body="Fail page")
+  return
+  # HTTPResponse(status=500, body="Fail page")
 
 
 @route("/success")
@@ -91,7 +92,7 @@ def success_route():
 
 if os.environ.get("APP_LOCATION") == "heroku":
   sentry_sdk.init(
-    dsn="https://<key>@o471662.ingest.sentry.io/<project>", # Для интерграции с sentry введите свои данные
+    dsn="https://examplePublicKey@o0.ingest.sentry.io/0", # Для интерграции с sentry введите свои данные
     integrations=[BottleIntegration()]
   )
   run(
